@@ -46,7 +46,8 @@ function App() {
   let content = '';
   if(mode === 'WELCOME'){
     content = <Article title="WELCOME" body="Hello, World"></Article>
-  }else if(mode === "READ"){
+  }
+  else if(mode === "READ"){
     content = <Article title="READ" body="Hello, World"></Article>
   }
   return (
