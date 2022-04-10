@@ -25,7 +25,6 @@ function Nav(props) {
     </li>
     )
   }
-  
   return <nav>
     <ol>
       {lis}
