@@ -42,14 +42,14 @@ function Article(props) {
 function Control(props){
   return (<p><a href={`/`+props.name} onClick={function(event){
     event.preventDefault();
-    props._setMode(props.name);
+    props.setMode(props.name);
   }}>{props.name}</a></p>)
 }
 
 function Control_id(props){
   return (<p><a href={`/`+props.name+'/'+props._id} onClick={function(event){
     event.preventDefault();
-    props._setMode(props.name);
+    props.setMode(props.name);
   }}>{props.name}</a></p>)
 }
 
@@ -128,14 +128,13 @@ function App() {
       }
     }
     content = <><Article title={title} body={body}></Article></>
-    controlCenter=<><Control name="Create" _setMode={setMode}></Control><Control_id name="Update" id={id} _setMode={setMode}></Control_id>
+    controlCenter=<><Control name="Create" setMode={setMode}></Control><Control_id name="Update" id={id} setMode={setMode}></Control_id></>
+    var deleteControl=<>
     <input type="button" value="Delete" onClick={function(){
       const newTopics=[];
-      var r=0;
-      for(var i=0; topics.length; i++){
+      for(var i=0; i<topics.length; i++){
         if(topics[i].id !== id){
-          newTopics[r]=topics[i];
-          r++;
+          newTopics.push(topics[i]);
         }
       }
       setTopics(newTopics);
@@ -189,6 +188,7 @@ function App() {
           }}></Nav>
           {content}
           {controlCenter}
+          {deleteControl}
         </div>
     </html>
   );
